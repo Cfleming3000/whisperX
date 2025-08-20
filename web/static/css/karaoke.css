@@ -1,0 +1,7 @@
+#transcript span {
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: yellow;
+}
