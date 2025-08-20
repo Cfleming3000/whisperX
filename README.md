@@ -320,8 +320,9 @@ If you use this in your research, please cite the paper:
 
 1. Coloca tus archivos de audio en `data/audio/`.
 2. Ejecuta los scripts de `scripts/` para procesar el audio y generar transcripciones.
-3. Las transcripciones resultantes se guardan en `data/transcripts/`.
-4. La interfaz web utiliza los archivos dentro de `web/`.
+3. Genera las páginas HTML ejecutando `python scripts/build_pages.py`.
+4. Las transcripciones resultantes se guardan en `data/transcripts/`.
+5. La interfaz web utiliza los archivos dentro de `web/`.
 
 ## Estructura de carpetas
 
