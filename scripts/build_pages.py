@@ -32,10 +32,12 @@ def build_pages() -> None:
         shutil.copy(audio_file, dest_audio)
 
         audio_src = dest_audio.name
-        json_src = os.path.relpath(json_file, PAGES_DIR)
+        json_src = os.path.relpath(json_file, PAGES_DIR).replace(os.sep, "/")
 
         html = template.format(title=title, audio_src=audio_src, json_src=json_src)
-        (PAGES_DIR / f"{json_file.stem}.html").write_text(html, encoding="utf-8")
+        dest_html = PAGES_DIR / f"{json_file.stem}.html"
+        dest_html.write_text(html, encoding="utf-8")
+        print(f"Wrote {dest_html}")
 
 
 if __name__ == "__main__":

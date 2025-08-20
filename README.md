@@ -320,7 +320,9 @@ If you use this in your research, please cite the paper:
 
 1. Coloca tus archivos de audio en `data/audio/`.
 2. Ejecuta los scripts de `scripts/` para procesar el audio y generar transcripciones.
-3. Genera las páginas HTML ejecutando `python scripts/build_pages.py`.
+3. Genera las páginas HTML con `python scripts/build_pages.py`. Este comando copia cada
+   archivo de audio a `web/pages/` y crea un HTML que referencia al audio y al JSON de la
+   transcripción.
 4. Las transcripciones resultantes se guardan en `data/transcripts/`.
 5. La interfaz web utiliza los archivos dentro de `web/`.
 
