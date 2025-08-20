@@ -315,3 +315,21 @@ If you use this in your research, please cite the paper:
   year={2023}
 }
 ```
+
+## Flujo de trabajo
+
+1. Coloca tus archivos de audio en `data/audio/`.
+2. Ejecuta los scripts de `scripts/` para procesar el audio y generar transcripciones.
+3. Las transcripciones resultantes se guardan en `data/transcripts/`.
+4. La interfaz web utiliza los archivos dentro de `web/`.
+
+## Estructura de carpetas
+
+- `data/audio`: Contiene los archivos de audio originales.
+- `data/transcripts`: Almacena las transcripciones generadas.
+- `scripts`: Scripts de procesamiento y utilidades.
+- `web/templates`: Plantillas HTML para renderizar páginas.
+- `web/static/js`: Archivos JavaScript del frontend.
+- `web/static/css`: Hojas de estilo CSS.
+- `web/pages`: Páginas estáticas o componentes adicionales.
+
