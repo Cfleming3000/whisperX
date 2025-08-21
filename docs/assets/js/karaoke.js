@@ -4,48 +4,30 @@ window.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('transcript');
   let words = [];
   let segmentEnd = null;
-  const wordSpans = [];
 
-  document.getElementById('speed').addEventListener('change', (e) => {
-    audio.playbackRate = parseFloat(e.target.value);
-  });
-
-  // Usamos directamente la ruta del atributo data-json
-  const jsonSrc = container.dataset.json;
+  const jsonSrc = container.dataset.json || '/static/words.json';
 
   fetch(jsonSrc)
     .then((resp) => resp.json())
     .then((data) => {
+      // Manejo de estructura WhisperX
       words = data.segments.flatMap(seg => seg.words || []);
-
-      data.segments.forEach((seg) => {
-        const div = document.createElement('div');
-        div.classList.add('segment');
-        div.textContent = seg.text;
-        div.addEventListener('click', () => {
-          audio.currentTime = seg.start;
-          segmentEnd = seg.end;
-          audio.play();
-        });
-        container.appendChild(div);
-      });
 
       words.forEach((w) => {
         const span = document.createElement('span');
-        span.classList.add('word');
         span.textContent = w.word + ' ';
         span.dataset.start = w.start;
         span.dataset.end = w.end;
+
         span.addEventListener('click', () => {
           segmentEnd = w.end;
           audio.currentTime = w.start;
           audio.play();
         });
+
         container.appendChild(span);
-        wordSpans.push(span);
       });
-    })
-    .catch(err => console.error("Error cargando JSON:", err));
+    });
 
   audio.addEventListener('timeupdate', () => {
     const t = audio.currentTime;
@@ -53,8 +35,8 @@ window.addEventListener('DOMContentLoaded', () => {
       audio.pause();
       segmentEnd = null;
     }
-    wordSpans.forEach((span, i) => {
-      const w = words[i];
+    words.forEach((w, i) => {
+      const span = container.children[i];
       if (t >= w.start && t < w.end) {
         span.classList.add('highlight');
       } else {
@@ -63,4 +45,3 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
