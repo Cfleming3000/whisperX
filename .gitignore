@@ -1,6 +1,7 @@
 # Ignorar audios
 *.wav
 *.mp3
+!docs/assets/audio/demo.wav
 *.flac
 *.m4a
 
