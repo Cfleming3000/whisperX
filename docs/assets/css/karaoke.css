@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+#transcript .segment {
+  cursor: pointer;
+}
+
 .highlight {
   background-color: yellow;
 }

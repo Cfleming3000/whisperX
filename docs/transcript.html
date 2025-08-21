@@ -7,7 +7,16 @@
 </head>
 <body>
   <h1>audio</h1>
-  <audio id="audio" controls src="assets/audio/audio.wav"></audio>
+  <audio id="audio" controls src="assets/audio/audio.mp3"></audio>
+  <div>
+    <label for="speed">Velocidad:</label>
+    <select id="speed">
+      <option value="0.75">0.75x</option>
+      <option value="1" selected>1x</option>
+      <option value="1.25">1.25x</option>
+      <option value="1.5">1.5x</option>
+    </select>
+  </div>
   <div id="transcript" data-json="assets/audio/audio.json"></div>
 
   <script src="assets/js/karaoke.js"></script>
