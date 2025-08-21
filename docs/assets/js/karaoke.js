@@ -5,7 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
   let words = [];
   let segmentEnd = null;
 
-  const jsonSrc = container.dataset.json || '/static/words.json';
+  // Usamos directamente la ruta del atributo data-json
+  const jsonSrc = container.dataset.json;
 
   fetch(jsonSrc)
     .then((resp) => resp.json())
@@ -23,7 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
         container.appendChild(span);
       });
-    });
+    })
+    .catch(err => console.error("Error cargando JSON:", err));
 
   audio.addEventListener('timeupdate', () => {
     const t = audio.currentTime;
@@ -41,3 +43,4 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
