@@ -5,7 +5,9 @@ window.addEventListener('DOMContentLoaded', () => {
   let words = [];
   let segmentEnd = null;
 
-  fetch('/static/words.json')
+  const jsonSrc = container.dataset.json || '/static/words.json';
+
+  fetch(jsonSrc)
     .then((resp) => resp.json())
     .then((data) => {
       words = data;
