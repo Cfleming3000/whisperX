@@ -10,21 +10,17 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch(jsonSrc)
     .then((resp) => resp.json())
     .then((data) => {
-      // Manejo de estructura WhisperX
-      words = data.segments.flatMap(seg => seg.words || []);
-
+      words = data;
       words.forEach((w) => {
         const span = document.createElement('span');
         span.textContent = w.word + ' ';
         span.dataset.start = w.start;
         span.dataset.end = w.end;
-
         span.addEventListener('click', () => {
           segmentEnd = w.end;
           audio.currentTime = w.start;
           audio.play();
         });
-
         container.appendChild(span);
       });
     });
